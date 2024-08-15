@@ -67,12 +67,20 @@ const dateToSeconds = (objDateAndTime) => {
         if (isInt(anyDataOuHora)) {
           ObjDataEHoraDetalhada[strDado] = anyDataOuHora;
         } else {
-          ObjDataEHoraDetalhada[strDado] = 1;
+          if (i < 3) {
+            ObjDataEHoraDetalhada[strDado] = 1;
+          } else {
+            ObjDataEHoraDetalhada[strDado] = 0;
+          }
         };
       } else if (isInt(anyDataOuHora)) {
         ObjDataEHoraDetalhada[strDado] = anyDataOuHora
       } else {
-        ObjDataEHoraDetalhada[strDado] = 1;
+        if (i < 3) {
+          ObjDataEHoraDetalhada[strDado] = 1;
+        } else {
+          ObjDataEHoraDetalhada[strDado] = 0;
+        }
       };
     };
   };

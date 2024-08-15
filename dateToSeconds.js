@@ -1,6 +1,5 @@
 // Importações:
-const isObj = require('./isObj'); const isIns = require('./isIns'); const isInt = require('./isInt'); const isStr = require('./isStr'); const checkLeapYear = require('./checkLeapYear');
-const isNum = require('./isNum');
+const isObj = require('./isObj'); const isIns = require('./isIns'); const isStr = require('./isStr'); const isInt = require('./isInt'); const checkLeapYear = require('./checkLeapYear');
 
 // Nome da função:
 const funName = () => `dateToSeconds`;
@@ -16,7 +15,7 @@ const funHelp = () => `${funDesc()}
 
 ${funAllName()}
 
-- O primeiro parâmetro é obrigatório, deve ser do tipo object, indica a data e hora e deve seguir esses padrões:
+- O primeiro parâmetro é opcional, deve ser do tipo object, indica a data e hora e deve seguir esses padrões:
 A chave 'year' representa o ano;
 A chave 'month' representa o mês;
 A chave 'day' representa o dia;
@@ -33,43 +32,48 @@ Exemplo de retorno:
 O retorno sempre será um integer.`;
 
 const dateToSeconds = (objDateAndTime) => {
-  if (!isObj(objDateAndTime) && !isIns(objDateAndTime)) {
+  const InsDataAgora = new Date();
+  if (!!objDateAndTime && !isObj(objDateAndTime) && !isIns(objDateAndTime)) {
     console.error(`ERRO FUNÇÃO: ${funAllName()}`);
     console.error(`ERRO: O primeiro parâmetro '${objDateAndTime}' não é do tipo object.`);
     console.error(`ERRO: Use '${funName()}.help()' para detalhes.`);
     return null;
   };
-  if (!objDateAndTime.year && !objDateAndTime.month && !objDateAndTime.day && !objDateAndTime.hour && !objDateAndTime.minute && !objDateAndTime.second) {
-    console.error(`ERRO FUNÇÃO: ${funAllName()}`);
-    console.error(`ERRO: O primeiro parâmetro '${objDateAndTime}' não possui nenhuma das chaves seguintes chaves: 'year', 'month', 'day', 'hour', 'minute' e 'second'.`);
-    console.error(`ERRO: Use '${funName()}.help()' para detalhes.`);
-    return null;
-  };
 
-  const ArrDatasEHoras = [objDateAndTime.year, objDateAndTime.month, objDateAndTime.day, objDateAndTime.hour, objDateAndTime.minute, objDateAndTime.second];
+  let arrDatasEHoras = [];
   const ObjDataEHoraDetalhada = {};
-  for (let i = 0; i < ArrDatasEHoras.length; i++) {
-    let anyDataOuHora = ArrDatasEHoras[i];
-    let strDado = '';
-    switch (i) {
-      case 0: strDado = 'intAno'; break;
-      case 1: strDado = 'intMes'; break;
-      case 2: strDado = 'intDia'; break;
-      case 3: strDado = 'intHora'; break;
-      case 4: strDado = 'intMinutos'; break;
-      case 5: strDado = 'intSegundos'; break;
-    };
-    if (isStr(anyDataOuHora)) {
-      anyDataOuHora = Number(anyDataOuHora);
-      if (isInt(anyDataOuHora)) {
-        ObjDataEHoraDetalhada[strDado] = anyDataOuHora;
+  if (!objDateAndTime || !objDateAndTime.year && !objDateAndTime.month && !objDateAndTime.day && !objDateAndTime.hour && !objDateAndTime.minute && !objDateAndTime.second) {
+    ObjDataEHoraDetalhada.intAno = InsDataAgora.getFullYear();
+    ObjDataEHoraDetalhada.intMes = InsDataAgora.getMonth() + 1;
+    ObjDataEHoraDetalhada.intDia = InsDataAgora.getDate();
+    ObjDataEHoraDetalhada.intHora = InsDataAgora.getHours();
+    ObjDataEHoraDetalhada.intMinutos = InsDataAgora.getMinutes();
+    ObjDataEHoraDetalhada.intSegundos = InsDataAgora.getSeconds();
+  } else {
+    arrDatasEHoras = [objDateAndTime.year, objDateAndTime.month, objDateAndTime.day, objDateAndTime.hour, objDateAndTime.minute, objDateAndTime.second];
+    for (let i = 0; i < arrDatasEHoras.length; i++) {
+      let anyDataOuHora = arrDatasEHoras[i];
+      let strDado = '';
+      switch (i) {
+        case 0: strDado = 'intAno'; break;
+        case 1: strDado = 'intMes'; break;
+        case 2: strDado = 'intDia'; break;
+        case 3: strDado = 'intHora'; break;
+        case 4: strDado = 'intMinutos'; break;
+        case 5: strDado = 'intSegundos'; break;
+      };
+      if (isStr(anyDataOuHora)) {
+        anyDataOuHora = Number(anyDataOuHora);
+        if (isInt(anyDataOuHora)) {
+          ObjDataEHoraDetalhada[strDado] = anyDataOuHora;
+        } else {
+          ObjDataEHoraDetalhada[strDado] = 1;
+        };
+      } else if (isInt(anyDataOuHora)) {
+        ObjDataEHoraDetalhada[strDado] = anyDataOuHora
       } else {
         ObjDataEHoraDetalhada[strDado] = 1;
       };
-    } else if (isInt(anyDataOuHora)) {
-      ObjDataEHoraDetalhada[strDado] = anyDataOuHora
-    } else {
-      ObjDataEHoraDetalhada[strDado] = 1;
     };
   };
 

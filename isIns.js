@@ -8,7 +8,7 @@ const funName = () => `isIns`;
 const funAllName = () => `const ${funName()} = (anyParameter) => {...};`;
 
 // Descrição da função:
-const funDesc = () => `--- Função que verifica se o dado é uma instância.`;
+const funDesc = () => `--- Função que verifica se o dado é uma instance.`;
 
 // Ajuda da função:
 const funHelp = () => `${funDesc()}

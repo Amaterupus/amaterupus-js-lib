@@ -1,5 +1,5 @@
 // Importações:
-const isUnd = require('./isUnd'); const isNul = require('./isNul'); const isBoo = require('./isBoo'); const isStr = require('./isStr'); const isNum = require('./isNum'); const isInt = require('./isInt'); const isFlo = require('./isFlo'); const isBig = require('./isBig'); const isSym = require('./isSym'); const isArr = require('./isArr'); const isObj = require('./isObj'); const isIns = require('./isIns'); const isFun = require('./isFun'); const isAsy = require('./isAsy'); const isCon = require('./isCon'); const isFac = require('./isFac'); const isCla = require('./isCla');
+const isUnd = require('./isUnd'); const isNul = require('./isNul'); const isBoo = require('./isBoo'); const isStr = require('./isStr'); const isNum = require('./isNum'); const isInt = require('./isInt'); const isFlo = require('./isFlo'); const isBig = require('./isBig'); const isSym = require('./isSym'); const isArr = require('./isArr'); const isObj = require('./isObj'); const isIns = require('./isIns'); const isPro = require('./isPro'); const isFun = require('./isFun'); const isAsy = require('./isAsy'); const isCon = require('./isCon'); const isFac = require('./isFac'); const isCla = require('./isCla');
 
 // Nome da função:
 const funName = () => `is_`;
@@ -41,6 +41,7 @@ const is_ = (anyParameter) => {
   if (isArr(anyParameter)) { ArrNomeAbreviado.push('arr'); ArrNomeCompleto.push('array'); };
   if (isObj(anyParameter)) { ArrNomeAbreviado.push('obj'); ArrNomeCompleto.push('object'); };
   if (isIns(anyParameter)) { ArrNomeAbreviado.push('ins'); ArrNomeCompleto.push('instance'); };
+  if (isPro(anyParameter)) { ArrNomeAbreviado.push('pro'); ArrNomeCompleto.push('promise'); };
   if (isFun(anyParameter)) { ArrNomeAbreviado.push('fun'); ArrNomeCompleto.push('function'); };
   if (isAsy(anyParameter)) { ArrNomeAbreviado.push('asy'); ArrNomeCompleto.push('async function'); };
   if (isCon(anyParameter)) { ArrNomeAbreviado.push('con'); ArrNomeCompleto.push('constructor function'); };

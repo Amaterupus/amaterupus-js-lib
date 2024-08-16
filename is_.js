@@ -1,5 +1,5 @@
 // Importações:
-const isBoo = require('./isBoo'); const isStr = require('./isStr'); const isNum = require('./isNum'); const isInt = require('./isInt'); const isNul = require('./isNul'); const isFlo = require('./isFlo'); const isArr = require('./isArr'); const isObj = require('./isObj'); const isIns = require('./isIns'); const isFun = require('./isFun'); const isCon = require('./isCon'); const isFac = require('./isFac'); const isCla = require('./isCla'); const isUnd = require('./isUnd');
+const isUnd = require('./isUnd'); const isNul = require('./isNul'); const isBoo = require('./isBoo'); const isStr = require('./isStr'); const isNum = require('./isNum'); const isInt = require('./isInt'); const isFlo = require('./isFlo'); const isBig = require('./isBig'); const isSym = require('./isSym'); const isArr = require('./isArr'); const isObj = require('./isObj'); const isIns = require('./isIns'); const isFun = require('./isFun'); const isAsy = require('./isAsy'); const isCon = require('./isCon'); const isFac = require('./isFac'); const isCla = require('./isCla');
 
 // Nome da função:
 const funName = () => `is_`;
@@ -29,20 +29,23 @@ const is_ = (anyParameter) => {
   const ArrRetorno = [];
   const ArrNomeAbreviado = [];
   const ArrNomeCompleto = [];
+  if (isUnd(anyParameter)) { ArrNomeAbreviado.push('und'); ArrNomeCompleto.push('undefined'); };
+  if (isNul(anyParameter)) { ArrNomeAbreviado.push('nul'); ArrNomeCompleto.push('null'); };
   if (isBoo(anyParameter)) { ArrNomeAbreviado.push('boo'); ArrNomeCompleto.push('boolean'); };
   if (isStr(anyParameter)) { ArrNomeAbreviado.push('str'); ArrNomeCompleto.push('string'); };
   if (isNum(anyParameter)) { ArrNomeAbreviado.push('num'); ArrNomeCompleto.push('number'); };
   if (isInt(anyParameter)) { ArrNomeAbreviado.push('int'); ArrNomeCompleto.push('integer'); };
   if (isFlo(anyParameter)) { ArrNomeAbreviado.push('flo'); ArrNomeCompleto.push('float'); };
+  if (isBig(anyParameter)) { ArrNomeAbreviado.push('big'); ArrNomeCompleto.push('bigint'); };
+  if (isSym(anyParameter)) { ArrNomeAbreviado.push('sym'); ArrNomeCompleto.push('symbol'); };
   if (isArr(anyParameter)) { ArrNomeAbreviado.push('arr'); ArrNomeCompleto.push('array'); };
   if (isObj(anyParameter)) { ArrNomeAbreviado.push('obj'); ArrNomeCompleto.push('object'); };
   if (isIns(anyParameter)) { ArrNomeAbreviado.push('ins'); ArrNomeCompleto.push('instance'); };
   if (isFun(anyParameter)) { ArrNomeAbreviado.push('fun'); ArrNomeCompleto.push('function'); };
+  if (isAsy(anyParameter)) { ArrNomeAbreviado.push('asy'); ArrNomeCompleto.push('async function'); };
   if (isCon(anyParameter)) { ArrNomeAbreviado.push('con'); ArrNomeCompleto.push('constructor function'); };
   if (isFac(anyParameter)) { ArrNomeAbreviado.push('fac'); ArrNomeCompleto.push('factory function'); };
   if (isCla(anyParameter)) { ArrNomeAbreviado.push('cla'); ArrNomeCompleto.push('class'); };
-  if (isNul(anyParameter)) { ArrNomeAbreviado.push('nul'); ArrNomeCompleto.push('null'); };
-  if (isUnd(anyParameter)) { ArrNomeAbreviado.push('und'); ArrNomeCompleto.push('undefined'); };
   if (ArrNomeAbreviado.length < 1) { ArrNomeAbreviado.push('-'); ArrNomeCompleto.push('-'); };
   ArrRetorno.push(ArrNomeAbreviado);
   ArrRetorno.push(ArrNomeCompleto);

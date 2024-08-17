@@ -1,11 +1,11 @@
 // Importações:
-const isStr = require('./isStr'); const isInt = require('./isInt'); const checkLeapYear = require('./checkLeapYear');
+const isStr = require('./isStr'); const isNum = require('./isNum'); const checkLeapYear = require('./checkLeapYear'); const isFlo = require('./isFlo');
 
 // Nome da função:
 const funName = () => `secondsToDate`;
 
 // Nome completo da função:
-const funAllName = () => `const ${funName()} = (intSecondsPassed) => {...};`;
+const funAllName = () => `const ${funName()} = (numSecondsPassed, booSecondsBasedOnDate = false) => {...};`;
 
 // Descrição da função:
 const funDesc = () => `--- Função que retorna uma data referente aos segundos passados.`;
@@ -15,7 +15,8 @@ const funHelp = () => `${funDesc()}
 
 ${funAllName()}
 
-- O primeiro parâmetro é obrigatório, deve ser do tipo integer e indica os segundos.
+- O primeiro parâmetro é opcional, deve ser do tipo number e indica os segundos.
+- O segundo parâmetro é opcional, deve ser do tipo boolean e indica se os segundos passados estão no formato do 'Date.now() / 1000'.
 
 Exemplo de uso:
 console.log(${funName()}(86400));
@@ -27,20 +28,23 @@ Exemplo de retorno:
   day: '02',
   hour: '00',
   minute: '00',
-  second: '00'
+  second: '00',
+  millisecond: '000'
 }
 
 O retorno sempre será um object.`;
 
-const secondsToDate = (intSecondsPassed) => {
-  if (isStr(intSecondsPassed)) {
-    intSecondsPassed = Number(intSecondsPassed);
+const secondsToDate = (numSecondsPassed, booSecondsBasedOnDate = false) => {
+  if (isStr(numSecondsPassed)) {
+    numSecondsPassed = Number(numSecondsPassed);
   };
-  if (!isInt(intSecondsPassed)) {
-    console.error(`ERRO FUNÇÃO: ${funAllName()}`);
-    console.error(`ERRO: O primeiro parâmetro '${intSecondsPassed}' não é do tipo integer.`);
-    console.error(`ERRO: Use '${funName()}.help()' para detalhes.`);
-    return null;
+  if (!isNum(numSecondsPassed)) {
+    booSecondsBasedOnDate = false;
+    numSecondsPassed = Date.now() / 1000 + 62135586000;
+  };
+
+  if (booSecondsBasedOnDate) {
+    numSecondsPassed += 62135586000;
   };
 
   const IntSegundosDe400Anos = 12622780800;
@@ -55,42 +59,49 @@ const secondsToDate = (intSecondsPassed) => {
   let intHora = 0;
   let intMinutos = 0;
   let intSegundos = 0;
+  let intMillisecond = 0;
   let intSegundosDoAnoAtual = checkLeapYear(intAno) ? IntSegundosDe1AnoBissexto : IntSegundosDe1AnoNaoBissexto;
 
-  while (intSecondsPassed >= IntSegundosDe400Anos) {
-    intSecondsPassed -= IntSegundosDe400Anos;
+  while (numSecondsPassed >= IntSegundosDe400Anos) {
+    numSecondsPassed -= IntSegundosDe400Anos;
     intAno += 400;
     intSegundosDoAnoAtual = checkLeapYear(intAno) ? IntSegundosDe1AnoBissexto : IntSegundosDe1AnoNaoBissexto;
   };
 
-  while (intSecondsPassed >= intSegundosDoAnoAtual) {
-    intSecondsPassed -= intSegundosDoAnoAtual;
+  while (numSecondsPassed >= intSegundosDoAnoAtual) {
+    numSecondsPassed -= intSegundosDoAnoAtual;
     intAno++;
     intSegundosDoAnoAtual = checkLeapYear(intAno) ? IntSegundosDe1AnoBissexto : IntSegundosDe1AnoNaoBissexto;
   };
 
   const ArrDiasDosMeses = [31, checkLeapYear(intAno) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-  while (intSecondsPassed >= (IntSegundosDe1Dia * ArrDiasDosMeses[intMes - 1])) {
-    intSecondsPassed -= IntSegundosDe1Dia * ArrDiasDosMeses[intMes - 1];
+  while (numSecondsPassed >= (IntSegundosDe1Dia * ArrDiasDosMeses[intMes - 1])) {
+    numSecondsPassed -= IntSegundosDe1Dia * ArrDiasDosMeses[intMes - 1];
     intMes++;
   };
 
-  while (intSecondsPassed >= IntSegundosDe1Dia) {
-    intSecondsPassed -= IntSegundosDe1Dia;
+  while (numSecondsPassed >= IntSegundosDe1Dia) {
+    numSecondsPassed -= IntSegundosDe1Dia;
     intDia++;
   };
 
-  while (intSecondsPassed >= IntSegundosDe1Hora) {
-    intSecondsPassed -= IntSegundosDe1Hora;
+  while (numSecondsPassed >= IntSegundosDe1Hora) {
+    numSecondsPassed -= IntSegundosDe1Hora;
     intHora++;
   };
 
-  while (intSecondsPassed >= IntSegundosDe1Minuto) {
-    intSecondsPassed -= IntSegundosDe1Minuto;
+  while (numSecondsPassed >= IntSegundosDe1Minuto) {
+    numSecondsPassed -= IntSegundosDe1Minuto;
     intMinutos++;
   };
 
-  intSegundos = intSecondsPassed;
+  if (isFlo(numSecondsPassed)) {
+    const ArrSegundosEMilissegundos = numSecondsPassed.toString().split('.');
+    intSegundos = ArrSegundosEMilissegundos[0];
+    intMillisecond = (Number(ArrSegundosEMilissegundos[1].slice(0, 4)) / 10).toFixed();
+  } else {
+    intSegundos = numSecondsPassed.toString();
+  };
 
   const ObjRetorno = {
     year: intAno.toString().padStart(4, '0'),
@@ -98,7 +109,8 @@ const secondsToDate = (intSecondsPassed) => {
     day: intDia.toString().padStart(2, '0'),
     hour: intHora.toString().padStart(2, '0'),
     minute: intMinutos.toString().padStart(2, '0'),
-    second: intSegundos.toString().padStart(2, '0')
+    second: intSegundos.padStart(2, '0'),
+    millisecond: intMillisecond.toString().padStart(3, '0')
   };
 
   return ObjRetorno;

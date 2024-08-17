@@ -1,11 +1,11 @@
 // Importações:
-const isStr = require('./isStr'); const isInt = require('./isInt');
+const isStr = require('./isStr'); const isNum = require('./isNum'); const isFlo = require('./isFlo');
 
 // Nome da função:
 const funName = () => `secondsDetailed`;
 
 // Nome completo da função:
-const funAllName = () => `const ${funName()} = (intSecondsPassed) => {...};`;
+const funAllName = () => `const ${funName()} = (numSecondsPassed, booSecondsBasedOnDate = false) => {...};`;
 
 // Descrição da função:
 const funDesc = () => `--- Função que retorna a quantidade de anos, meses, dias, horas, minutos e segundos referente aos segundos passados.`;
@@ -15,7 +15,8 @@ const funHelp = () => `${funDesc()}
 
 ${funAllName()}
 
-- O primeiro parâmetro é obrigatório, deve ser do tipo integer e indica os segundos.
+- O primeiro parâmetro é opcional, deve ser do tipo number e indica os segundos.
+- O segundo parâmetro é opcional, deve ser do tipo boolean e indica se os segundos passados estão no formato do 'Date.now() / 1000'.
 
 Exemplo de uso:
 console.log(${funName()}(31536000));
@@ -28,28 +29,32 @@ Exemplo de retorno:
   averageHours: 4,
   averageMinutes: 39,
   averageSeconds: 54,
+  averageMilliseconds: 0,
   exactYears: 0,
   exactMonths: 0,
   exactDays: 365,
   exactHours: 0,
   exactMinutes: 0,
-  exactSeconds: 0
+  exactSeconds: 0,
+  exactMilliseconds: 0
 }
 
 O retorno sempre será um objeto.`;
 
-const secondsDetailed = (intSecondsPassed) => {
-  if (isStr(intSecondsPassed)) {
-    intSecondsPassed = Number(intSecondsPassed);
+const secondsDetailed = (numSecondsPassed, booSecondsBasedOnDate = false) => {
+  if (isStr(numSecondsPassed)) {
+    numSecondsPassed = Number(numSecondsPassed);
   };
-  if (!isInt(intSecondsPassed)) {
-    console.error(`ERRO FUNÇÃO: ${funAllName()}`);
-    console.error(`ERRO: O primeiro parâmetro '${intSecondsPassed}' não é do tipo integer.`);
-    console.error(`ERRO: Use '${funName()}.help()' para detalhes.`);
-    return { null: null };
+  if (!isNum(numSecondsPassed)) {
+    booSecondsBasedOnDate = false;
+    numSecondsPassed = Date.now() / 1000 + 62135586000;
   };
 
-  let intSegundosPassadoCopia = intSecondsPassed;
+  if (booSecondsBasedOnDate) {
+    numSecondsPassed += 62135586000;
+  };
+
+  let intSegundosPassadoCopia = numSecondsPassed;
 
   const IntSegundosDe400Anos = 12622780800;
   const IntMediaSegundosDe1Ano = 31556952;
@@ -64,44 +69,52 @@ const secondsDetailed = (intSecondsPassed) => {
   let intMediaHoras = 0;
   let intMediaMinutos = 0;
   let intMediaSegundos = 0;
+  let intMediaMilissegundos = 0;
 
-  while (intSecondsPassed >= IntSegundosDe400Anos) {
-    intSecondsPassed -= IntSegundosDe400Anos;
+  while (numSecondsPassed >= IntSegundosDe400Anos) {
+    numSecondsPassed -= IntSegundosDe400Anos;
     intMediaAnos += 400;
   };
 
-  while (intSecondsPassed >= IntMediaSegundosDe1Ano) {
-    intSecondsPassed -= IntMediaSegundosDe1Ano;
+  while (numSecondsPassed >= IntMediaSegundosDe1Ano) {
+    numSecondsPassed -= IntMediaSegundosDe1Ano;
     intMediaAnos++;
   };
 
-  while (intSecondsPassed >= IntMediaSegundosDe1Mes) {
-    intSecondsPassed -= IntMediaSegundosDe1Mes;
+  while (numSecondsPassed >= IntMediaSegundosDe1Mes) {
+    numSecondsPassed -= IntMediaSegundosDe1Mes;
     intMediaMeses++;
   };
 
-  while (intSecondsPassed >= IntSegundosDe1Dia) {
-    intSecondsPassed -= IntSegundosDe1Dia;
+  while (numSecondsPassed >= IntSegundosDe1Dia) {
+    numSecondsPassed -= IntSegundosDe1Dia;
     intMediaDias++;
   };
 
-  while (intSecondsPassed >= IntSegundosDe1Hora) {
-    intSecondsPassed -= IntSegundosDe1Hora;
+  while (numSecondsPassed >= IntSegundosDe1Hora) {
+    numSecondsPassed -= IntSegundosDe1Hora;
     intMediaHoras++;
   };
 
-  while (intSecondsPassed >= IntSegundosDe1Minuto) {
-    intSecondsPassed -= IntSegundosDe1Minuto;
+  while (numSecondsPassed >= IntSegundosDe1Minuto) {
+    numSecondsPassed -= IntSegundosDe1Minuto;
     intMediaMinutos++;
   };
 
-  intMediaSegundos = intSecondsPassed;
+  if (isFlo(numSecondsPassed)) {
+    const ArrSegundosEMilissegundos = numSecondsPassed.toString().split('.');
+    intMediaSegundos = Number(ArrSegundosEMilissegundos[0]);
+    intMediaMilissegundos = Number((Number(ArrSegundosEMilissegundos[1].slice(0, 4)) / 10).toFixed());
+  } else {
+    intMediaSegundos = numSecondsPassed;
+  };
 
   let intExatoAnos = 0;
   let intExatoDias = 0;
   let intExatoHoras = 0;
   let intExatoMinutos = 0;
   let intExatoSegundos = 0;
+  let intExatoMilissegundos = 0;
 
   while (intSegundosPassadoCopia >= IntSegundosDe400Anos) {
     intSegundosPassadoCopia -= IntSegundosDe400Anos;
@@ -123,21 +136,29 @@ const secondsDetailed = (intSecondsPassed) => {
     intExatoMinutos++;
   };
 
-  intExatoSegundos = intSegundosPassadoCopia;
+  if (isFlo(intSegundosPassadoCopia)) {
+    const ArrSegundosEMilissegundos = intSegundosPassadoCopia.toString().split('.');
+    intExatoSegundos = Number(ArrSegundosEMilissegundos[0]);
+    intExatoMilissegundos = Number((Number(ArrSegundosEMilissegundos[1].slice(0, 4)) / 10).toFixed());
+  } else {
+    intExatoSegundos = intSegundosPassadoCopia;
+  };
 
   const ObjRetorno = {};
   ObjRetorno.averageYears = intMediaAnos;
-  ObjRetorno.averageMonths = Number(intMediaMeses.toFixed(0));
-  ObjRetorno.averageDays = Number(intMediaDias.toFixed(0));
-  ObjRetorno.averageHours = Number(intMediaHoras.toFixed(0));
-  ObjRetorno.averageMinutes = Number(intMediaMinutos.toFixed(0));
-  ObjRetorno.averageSeconds = Number(intMediaSegundos.toFixed(0));
+  ObjRetorno.averageMonths = intMediaMeses;
+  ObjRetorno.averageDays = intMediaDias;
+  ObjRetorno.averageHours = intMediaHoras;
+  ObjRetorno.averageMinutes = intMediaMinutos;
+  ObjRetorno.averageSeconds = intMediaSegundos;
+  ObjRetorno.averageMilliseconds = intMediaMilissegundos;
   ObjRetorno.exactYears = intExatoAnos;
   ObjRetorno.exactMonths = 0;
   ObjRetorno.exactDays = intExatoDias;
   ObjRetorno.exactHours = intExatoHoras;
   ObjRetorno.exactMinutes = intExatoMinutos;
   ObjRetorno.exactSeconds = intExatoSegundos;
+  ObjRetorno.exactMilliseconds = intExatoMilissegundos;
 
   return ObjRetorno;
 };

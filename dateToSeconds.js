@@ -33,7 +33,7 @@ O retorno sempre será um integer.`;
 
 const dateToSeconds = (objDateAndTime) => {
   const InsDataAgora = new Date();
-  if (!!objDateAndTime && !isObj(objDateAndTime) && !isIns(objDateAndTime)) {
+  if (!!objDateAndTime && !isObj(objDateAndTime)) {
     console.error(`ERRO FUNÇÃO: ${funAllName()}`);
     console.error(`ERRO: O primeiro parâmetro '${objDateAndTime}' não é do tipo object.`);
     console.error(`ERRO: Use '${funName()}.help()' para detalhes.`);

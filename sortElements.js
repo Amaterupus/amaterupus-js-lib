@@ -8,7 +8,7 @@ const funName = () => `sortElements`;
 const funAllName = () => `const ${funName()} = (arrArrayToSort, strSortMode = 'cre', strSortType = 'vt', ...arrArrayIndicesOrObjectKeys) => {...};`;
 
 // Descrição da função:
-const funDesc = () => `--- Função que`;
+const funDesc = () => `--- Função que retorna o array passado ordenado referente aos índices ou chaves passadas.`;
 
 // Ajuda da função:
 const funHelp = () => `${funDesc()}

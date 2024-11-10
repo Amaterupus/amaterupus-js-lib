@@ -200,32 +200,44 @@ const sortElements = (arrArrayToSort, strSortMode = 'cre', strSortType = 'vt', .
     return 0;
   };
 
+  const funVerificarDecrescente = (intComparacao) => {
+    if (strSortMode === 'dec') {
+      if (intComparacao === 1) {
+        intComparacao = -1;
+      } else if (intComparacao === -1) {
+        intComparacao = 1;
+      };
+    };
+    return intComparacao;
+  };
+
+  const funComparar = (anyA, anyB) => {
+    if (strSortType === 'vt') {
+      intComparacao = funCompararValoresETipos(anyA, anyB);
+    } else if (strSortType === 'v') {
+      intComparacao = funCompararApenasValores(anyA, anyB);
+    } else {
+      intComparacao = funCompararApenasTipos(anyA, anyB);
+    };
+    return funVerificarDecrescente(intComparacao);
+  };
+
   let arrArrayDeElementosOrdenados = [];
+  let intComparacao;
   if (strTipoElementos === 'string') {
     arrArrayDeElementosOrdenados = ArrArrayParaOrdenarCopia.sort((anyA, anyB) => {
-      return anyA.localeCompare(anyB);
+      intComparacao = anyA.localeCompare(anyB);
+      return funVerificarDecrescente(intComparacao);
     });
   } else if (strTipoElementos === 'any') {
     arrArrayDeElementosOrdenados = ArrArrayParaOrdenarCopia.sort((anyA, anyB) => {
-      if (strSortType === 'vt') {
-        return funCompararValoresETipos(anyA, anyB);
-      } else if (strSortType === 'v') {
-        return funCompararApenasValores(anyA, anyB);
-      } else {
-        return funCompararApenasTipos(anyA, anyB);
-      };
+      return funComparar(anyA, anyB);
     });
   } else {
     arrArrayDeElementosOrdenados = ArrArrayParaOrdenarCopia.sort((anyA, anyB) => {
       const AnyIndiceOuChaveOrdenar = arrArrayIndicesOrObjectKeys[arrArrayIndicesOrObjectKeys.length - 1];
       if (arrArrayIndicesOrObjectKeys.length === 1) {
-        if (strSortType === 'vt') {
-          return funCompararValoresETipos(anyA[AnyIndiceOuChaveOrdenar], anyB[AnyIndiceOuChaveOrdenar]);
-        } else if (strSortType === 'v') {
-          return funCompararApenasValores(anyA[AnyIndiceOuChaveOrdenar], anyB[AnyIndiceOuChaveOrdenar]);
-        } else {
-          return funCompararApenasTipos(anyA[AnyIndiceOuChaveOrdenar], anyB[AnyIndiceOuChaveOrdenar]);
-        };
+        return funComparar(anyA[AnyIndiceOuChaveOrdenar], anyB[AnyIndiceOuChaveOrdenar]);
       } else {
         for (let i = arrArrayIndicesOrObjectKeys.length - 2; i >= 0; i--) {
           const AnyIndiceOuChave = arrArrayIndicesOrObjectKeys[i];
@@ -233,22 +245,12 @@ const sortElements = (arrArrayToSort, strSortMode = 'cre', strSortType = 'vt', .
             return 0;
           };
         };
-        if (strSortType === 'vt') {
-          return funCompararValoresETipos(anyA[AnyIndiceOuChaveOrdenar], anyB[AnyIndiceOuChaveOrdenar]);
-        } else if (strSortType === 'v') {
-          return funCompararApenasValores(anyA[AnyIndiceOuChaveOrdenar], anyB[AnyIndiceOuChaveOrdenar]);
-        } else {
-          return funCompararApenasTipos(anyA[AnyIndiceOuChaveOrdenar], anyB[AnyIndiceOuChaveOrdenar]);
-        };
+        return funComparar(anyA[AnyIndiceOuChaveOrdenar], anyB[AnyIndiceOuChaveOrdenar]);
       };
     });
   };
 
-  if (strSortMode === 'cre') {
-    return arrArrayDeElementosOrdenados;
-  } else {
-    return arrArrayDeElementosOrdenados.reverse();
-  };
+  return arrArrayDeElementosOrdenados;
 };
 
 sortElements.nome = funAllName;

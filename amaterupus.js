@@ -50,7 +50,7 @@ const funMostrarFuncoes = () => {
   let strFuncoesBiblioteca = '';
   for (let i = 1; i < ArrFuncoesBiblioteca.length; i++) {
     const StrNomeFuncao = ArrFuncoesBiblioteca[i];
-    if (StrNomeFuncao !== 'teste' && StrNomeFuncao !== 'desc' && StrNomeFuncao !== 'help') {
+    if (StrNomeFuncao !== 'test' && StrNomeFuncao !== 'desc' && StrNomeFuncao !== 'help') {
       const StrDescricao = `${amaterupus[StrNomeFuncao].desc()}`;
       const StrNome = `${amaterupus[StrNomeFuncao].name()}`;
       ArrFuncoesBibliotecaModificado.push(StrDescricao);

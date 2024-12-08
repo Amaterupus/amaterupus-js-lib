@@ -32,7 +32,7 @@ const isSym = (anyParameter) => {
   return false;
 };
 
-isSym.nome = funAllName;
+isSym.name = funAllName;
 isSym.desc = funDesc;
 isSym.help = funHelp;
 

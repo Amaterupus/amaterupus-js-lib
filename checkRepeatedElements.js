@@ -82,7 +82,7 @@ const checkRepeatedElements = (arrArrayOfElements, booCompareTypes = true) => {
   return ArrElementosEContagem;
 };
 
-checkRepeatedElements.nome = funAllName;
+checkRepeatedElements.name = funAllName;
 checkRepeatedElements.desc = funDesc;
 checkRepeatedElements.help = funHelp;
 

@@ -49,7 +49,7 @@ const numberForFormRealMoney = (numNumber, intDecimals = 2) => {
   return numNumber.join(',');
 };
 
-numberForFormRealMoney.nome = funAllName;
+numberForFormRealMoney.name = funAllName;
 numberForFormRealMoney.desc = funDesc;
 numberForFormRealMoney.help = funHelp;
 

@@ -253,7 +253,7 @@ const sortElements = (arrArrayToSort, strSortMode = 'cre', strSortType = 'vt', .
   return arrArrayDeElementosOrdenados;
 };
 
-sortElements.nome = funAllName;
+sortElements.name = funAllName;
 sortElements.desc = funDesc;
 sortElements.help = funHelp;
 

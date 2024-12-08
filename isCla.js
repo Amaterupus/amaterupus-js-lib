@@ -42,7 +42,7 @@ const isCla = (anyParameter) => {
   return false;
 };
 
-isCla.nome = funAllName;
+isCla.name = funAllName;
 isCla.desc = funDesc;
 isCla.help = funHelp;
 

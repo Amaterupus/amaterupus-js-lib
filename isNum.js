@@ -32,7 +32,7 @@ const isNum = (anyParameter) => {
   return false;
 };
 
-isNum.nome = funAllName;
+isNum.name = funAllName;
 isNum.desc = funDesc;
 isNum.help = funHelp;
 

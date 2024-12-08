@@ -32,7 +32,7 @@ const isBoo = (anyParameter) => {
   return false;
 };
 
-isBoo.nome = funAllName;
+isBoo.name = funAllName;
 isBoo.desc = funDesc;
 isBoo.help = funHelp;
 

@@ -116,7 +116,7 @@ const secondsToDate = (numSecondsPassed, booSecondsBasedOnDate = false) => {
   return ObjRetorno;
 };
 
-secondsToDate.nome = funAllName;
+secondsToDate.name = funAllName;
 secondsToDate.desc = funDesc;
 secondsToDate.help = funHelp;
 

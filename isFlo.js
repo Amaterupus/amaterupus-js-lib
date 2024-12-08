@@ -32,7 +32,7 @@ const isFlo = (anyParameter) => {
   return false;
 };
 
-isFlo.nome = funAllName;
+isFlo.name = funAllName;
 isFlo.desc = funDesc;
 isFlo.help = funHelp;
 

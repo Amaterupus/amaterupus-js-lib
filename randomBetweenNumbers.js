@@ -101,7 +101,7 @@ const randomBetweenNumbers = (strReturnIntegerOrFloat = 'int', ...arrArraysOfInt
   };
 };
 
-randomBetweenNumbers.nome = funAllName;
+randomBetweenNumbers.name = funAllName;
 randomBetweenNumbers.desc = funDesc;
 randomBetweenNumbers.help = funHelp;
 

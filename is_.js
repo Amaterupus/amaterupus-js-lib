@@ -53,7 +53,7 @@ const is_ = (anyParameter) => {
   return ArrRetorno;
 };
 
-is_.nome = funAllName;
+is_.name = funAllName;
 is_.desc = funDesc;
 is_.help = funHelp;
 

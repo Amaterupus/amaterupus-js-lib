@@ -32,7 +32,7 @@ const isNul = (anyParameter) => {
   return false;
 };
 
-isNul.nome = funAllName;
+isNul.name = funAllName;
 isNul.desc = funDesc;
 isNul.help = funHelp;
 

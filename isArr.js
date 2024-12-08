@@ -32,7 +32,7 @@ const isArr = (anyParameter) => {
   return false;
 };
 
-isArr.nome = funAllName;
+isArr.name = funAllName;
 isArr.desc = funDesc;
 isArr.help = funHelp;
 

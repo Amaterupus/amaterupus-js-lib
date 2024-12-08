@@ -40,7 +40,7 @@ const checkLeapYear = (intYear) => {
   return false;
 };
 
-checkLeapYear.nome = funAllName;
+checkLeapYear.name = funAllName;
 checkLeapYear.desc = funDesc;
 checkLeapYear.help = funHelp;
 

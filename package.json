@@ -1,5 +1,5 @@
 {
-  "name": "niltexuchiha-js-lib",
+  "name": "amaterupus",
   "version": "1.0.2",
   "description": "Minha biblioteca de JavaScript.",
   "main": "index.js",
@@ -8,13 +8,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/niltexmartins/niltexuchiha-js-lib.git"
+    "url": "git+ssh://git@github.com/amaterupus/amaterupus-js-lib.git"
   },
-  "author": "Niltex Martins",
+  "author": "Amaterupus",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/niltexmartins/niltexuchiha-js-lib/issues"
+    "url": "https://github.com/amaterupus/amaterupus-js-lib/issues"
   },
-  "homepage": "https://github.com/niltexmartins/niltexuchiha-js-lib#readme",
+  "homepage": "https://github.com/amaterupus/amaterupus-js-lib#readme",
   "keywords": []
 }

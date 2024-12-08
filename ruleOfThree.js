@@ -79,7 +79,7 @@ const ruleOfThree = (numFirstQuantity1, numSecondQuantity1, numFirstQuantity2, n
   };
 };
 
-ruleOfThree.nome = funAllName;
+ruleOfThree.name = funAllName;
 ruleOfThree.desc = funDesc;
 ruleOfThree.help = funHelp;
 

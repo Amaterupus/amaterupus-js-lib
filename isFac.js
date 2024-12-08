@@ -38,7 +38,7 @@ const isFac = (anyParameter) => {
   return false;
 };
 
-isFac.nome = funAllName;
+isFac.name = funAllName;
 isFac.desc = funDesc;
 isFac.help = funHelp;
 

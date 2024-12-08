@@ -79,7 +79,7 @@ const randomCharacter = (intCharacterType = 0, intLetterType = 0) => {
   };
 };
 
-randomCharacter.nome = funAllName;
+randomCharacter.name = funAllName;
 randomCharacter.desc = funDesc;
 randomCharacter.help = funHelp;
 

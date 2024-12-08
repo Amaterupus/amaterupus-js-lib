@@ -58,7 +58,7 @@ const arraysWithElementInElements = (intIndexElement = 0, ...arrArraysWithElemen
   return ArrRetorno;
 };
 
-arraysWithElementInElements.nome = funAllName;
+arraysWithElementInElements.name = funAllName;
 arraysWithElementInElements.desc = funDesc;
 arraysWithElementInElements.help = funHelp;
 

@@ -32,7 +32,7 @@ const isStr = (anyParameter) => {
   return false;
 };
 
-isStr.nome = funAllName;
+isStr.name = funAllName;
 isStr.desc = funDesc;
 isStr.help = funHelp;
 

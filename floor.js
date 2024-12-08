@@ -85,7 +85,7 @@ const floor = (strNumber, booWorkingWithNegatives = false) => {
   return `${strParteInteira}.${strParteDecimal}`;
 };
 
-floor.nome = funAllName;
+floor.name = funAllName;
 floor.desc = funDesc;
 floor.help = funHelp;
 

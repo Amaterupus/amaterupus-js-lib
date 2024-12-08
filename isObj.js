@@ -32,7 +32,7 @@ const isObj = (anyParameter) => {
   return false;
 };
 
-isObj.nome = funAllName;
+isObj.name = funAllName;
 isObj.desc = funDesc;
 isObj.help = funHelp;
 

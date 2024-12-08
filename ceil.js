@@ -70,7 +70,7 @@ const ceil = (strNumber) => {
   return `${strParteInteira}.${strParteDecimal}`;
 };
 
-ceil.nome = funAllName;
+ceil.name = funAllName;
 ceil.desc = funDesc;
 ceil.help = funHelp;
 

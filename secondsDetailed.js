@@ -163,7 +163,7 @@ const secondsDetailed = (numSecondsPassed, booSecondsBasedOnDate = false) => {
   return ObjRetorno;
 };
 
-secondsDetailed.nome = funAllName;
+secondsDetailed.name = funAllName;
 secondsDetailed.desc = funDesc;
 secondsDetailed.help = funHelp;
 

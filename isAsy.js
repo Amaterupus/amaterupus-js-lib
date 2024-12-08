@@ -34,7 +34,7 @@ const isAsy = (anyParameter) => {
   return false;
 };
 
-isAsy.nome = funAllName;
+isAsy.name = funAllName;
 isAsy.desc = funDesc;
 isAsy.help = funHelp;
 

@@ -130,7 +130,7 @@ const dateToSeconds = (objDateAndTime) => {
   return intSegundosRetorno;
 };
 
-dateToSeconds.nome = funAllName;
+dateToSeconds.name = funAllName;
 dateToSeconds.desc = funDesc;
 dateToSeconds.help = funHelp;
 

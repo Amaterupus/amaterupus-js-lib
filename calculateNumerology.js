@@ -89,7 +89,7 @@ const calculateNumerology = (...arrStringsOrNumbers) => {
   return ArrRetorno;
 };
 
-calculateNumerology.nome = funAllName;
+calculateNumerology.name = funAllName;
 calculateNumerology.desc = funDesc;
 calculateNumerology.help = funHelp;
 

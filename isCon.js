@@ -39,7 +39,7 @@ const isCon = (anyParameter) => {
   return false;
 };
 
-isCon.nome = funAllName;
+isCon.name = funAllName;
 isCon.desc = funDesc;
 isCon.help = funHelp;
 

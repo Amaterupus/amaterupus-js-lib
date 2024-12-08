@@ -18,7 +18,7 @@ ${funAllName()}
 - O primeiro parâmetro é opcional, pode ser de qualquer tipo e indica o dado.
 
 Exemplo de uso:
-console.log(${funName()}(new function fcoFuncaoConstrutora(nome) {this.nome = nome}));
+console.log(${funName()}(new function fcoFuncaoConstrutora(nome) {this.name = nome}));
 
 Exemplo de retorno:
 true
@@ -32,7 +32,7 @@ const isIns = (anyParameter) => {
   return false;
 };
 
-isIns.nome = funAllName;
+isIns.name = funAllName;
 isIns.desc = funDesc;
 isIns.help = funHelp;
 

@@ -32,7 +32,7 @@ const isBig = (anyParameter) => {
   return false;
 };
 
-isBig.nome = funAllName;
+isBig.name = funAllName;
 isBig.desc = funDesc;
 isBig.help = funHelp;
 

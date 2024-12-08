@@ -32,7 +32,7 @@ const isUnd = (anyParameter) => {
   return false;
 };
 
-isUnd.nome = funAllName;
+isUnd.name = funAllName;
 isUnd.desc = funDesc;
 isUnd.help = funHelp;
 

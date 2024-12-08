@@ -48,7 +48,7 @@ const toFixed = (numNumber, intDecimals = 0) => {
   return ((Math.trunc((numNumber * IntCasas))) / IntCasas).toFixed(intDecimals);
 };
 
-toFixed.nome = funAllName;
+toFixed.name = funAllName;
 toFixed.desc = funDesc;
 toFixed.help = funHelp;
 

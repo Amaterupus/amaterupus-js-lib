@@ -29,13 +29,35 @@ ${funAllName()}
 '2' para letra aleatória podendo ser maiúscula.
 
 Exemplo de uso:
-console.log(${funName()}(2, 1))
+${funName()}(2, 1);
 
 Exemplo de retorno:
 n
 
 O retorno sempre será uma string.`;
 
+/**
+ * Função que escolhe aleatoriamente um caractere, podendo ser um número, uma letra ou um símbolo.
+ * 
+ * @param {number} [intCharacterType=0] Opcional (integer). Indica o tipo de caractere e deve seguir algum desses padrões:
+ *   - '0' para caractere aleatório podendo ser número, letra ou símbolo;
+ *   - '1' para caractere aleatório podendo ser apenas número;
+ *   - '2' para caractere aleatório podendo ser apenas letra;
+ *   - '3' para caractere aleatório podendo ser apenas símbolo;
+ *   - '4' para caractere aleatório podendo ser número ou letra;
+ *   - '5' para caractere aleatório podendo ser número ou símbolo;
+ *   - '6' para caractere aleatório podendo ser letra ou símbolo.
+ * @param {number} [intLetterType=0] Opcional (integer). Indica o tipo de letra e deve seguir algum desses padrões:
+ *   - '0' para letra aleatória podendo ser minúscula ou maiúscula;
+ *   - '1' para letra aleatória podendo ser minúscula;
+ *   - '2' para letra aleatória podendo ser maiúscula.
+ * @returns {string} String.
+ * 
+ * @example
+ * randomCharacter(2, 1);
+ * // Retorno:
+ * // n
+ */
 const randomCharacter = (intCharacterType = 0, intLetterType = 0) => {
   if (isStr(intCharacterType)) {
     intCharacterType = Number(intCharacterType);

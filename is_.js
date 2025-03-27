@@ -8,23 +8,44 @@ const funName = () => `is_`;
 const funAllName = () => `const ${funName()} = (anyParameter) => {...};`;
 
 // Descrição da função:
-const funDesc = () => `--- Função que retorna o tipo do dado.`;
+const funDesc = () => `--- Função que retorna os tipos do dado fornecido.`;
 
 // Ajuda da função:
 const funHelp = () => `${funDesc()}
 
 ${funAllName()}
 
-- O primeiro parâmetro é opcional, pode ser de qualquer tipo e indica o dado.
+- O primeiro parâmetro é opcional, pode ser de qualquer tipo e indica o dado a ser verificado.
 
 Exemplo de uso:
-console.log(${funName()}((a) => { return { a: a } }))
+${funName()}(a => { a: a });
 
 Exemplo de retorno:
-[ [ 'fun', 'fac' ], [ 'function', 'factory function' ] ]
+[
+  [ 'fun', 'fac' ],
+  [ 'function', 'factory function' ]
+]
 
-O retorno sempre será um array de elementos.`;
+O retorno sempre será um array de duas posições:
+- A primeira posição é um array com as abreviações dos tipos identificados.
+- A segunda posição é um array com os nomes completos dos tipos identificados.`;
 
+/**
+ * Função que retorna os tipos do dado fornecido.
+ * 
+ * @param {*} [anyParameter] Opcional (any). Dado a ser verificado.
+ * @returns {Array<Array<string>>} Array de duas posições:
+ *   - A primeira posição é um array com as abreviações dos tipos identificados.
+ *   - A segunda posição é um array com os nomes completos dos tipos identificados.
+ * 
+ * @example
+ * is_(a => { a: a });
+ * // Retorno:
+ * // [
+ * //   [ 'fun', 'fac' ],
+ * //   [ 'function', 'factory function' ]
+ * // ]
+ */
 const is_ = (anyParameter) => {
   const ArrRetorno = [];
   const ArrNomeAbreviado = [];

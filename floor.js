@@ -19,13 +19,25 @@ ${funAllName()}
 - O segundo parâmetro é opcional, deve ser do tipo boolean e indica se a função trabalhará com valores negativos ou se o menor retorno será '0'.
 
 Exemplo de uso:
-console.log(${funName()}('123.123'));
+${funName()}('123.123');
 
 Exemplo de retorno:
 123.122
 
 O retorno sempre será uma string.`;
 
+/**
+ * Função que subtrai 1 do último elemento de um número.
+ * 
+ * @param {number} strNumber Obrigatório (number). Indica o número a ser processado.
+ * @param {boolean} [booWorkingWithNegatives=false] Opcional (boolean). Indica se a função trabalhará com valores negativos ou se o menor retorno será '0'.
+ * @returns {string} String.
+ * 
+ * @example
+ * floor('123.123');
+ * // Retorno:
+ * // 123.122
+ */
 const floor = (strNumber, booWorkingWithNegatives = false) => {
   if (!isStr(strNumber) || !isNum(Number(strNumber))) {
     console.error(`ERRO FUNÇÃO: ${funAllName()}`);

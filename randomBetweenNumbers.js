@@ -21,13 +21,27 @@ ${funAllName()}
 - O segundo parâmetro é obrigatório e os demais são opcionais, devem ser do tipo array e indicam os intervalos do número randômico.
 
 Exemplo de uso:
-console.log(${funName()}(null, [1, 2], [5, 6]));
+${funName()}(null, [1, 2], [5, 6]);
 
 Exemplo de retorno:
 5
 
 O retorno sempre será um number.`;
 
+/**
+ * Função que escolhe aleatoriamente um número entre os intervalos de índice 0 e 1 dos arrays passados.
+ * 
+ * @param {string} [strReturnIntegerOrFloat='int'] Opcional (string). Indica se o número randômico deve ser um integer ou float deve seguir algum desses padrões:
+ *   - 'int' para um integer;
+ *   - 'flo' para um float.
+ * @param {...Array} arrArraysOfIntervals Obrigatório e demais opcionais (array). Indicam os intervalos do número randômico:
+ * @returns {number} Number.
+ * 
+ * @example
+ * randomBetweenNumbers(null, [1, 2], [5, 6]);
+ * // Retorno:
+ * // 5
+ */
 const randomBetweenNumbers = (strReturnIntegerOrFloat = 'int', ...arrArraysOfIntervals) => {
   if (arrArraysOfIntervals.length < 1) {
     console.error(`ERRO FUNÇÃO: ${funAllName()}`);

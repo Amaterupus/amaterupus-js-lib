@@ -19,7 +19,7 @@ ${funAllName()}
 - O segundo parâmetro é opcional, deve ser do tipo boolean e indica se os segundos passados estão no formato do 'Date.now() / 1000'.
 
 Exemplo de uso:
-console.log(${funName()}(31536000));
+${funName()}(31536000);
 
 Exemplo de retorno:
 {
@@ -41,6 +41,47 @@ Exemplo de retorno:
 
 O retorno sempre será um objeto.`;
 
+/**
+ * Função que retorna a quantidade de anos, meses, dias, horas, minutos e segundos referente aos segundos passados.
+ * 
+ * @param {number} [numSecondsPassed] Opcional (number). Indica os segundos.
+ * @param {boolean} [booSecondsBasedOnDate=false] Opcional (boolean). Indica se os segundos passados estão no formato do 'Date.now() / 1000'.
+ * @returns {Object} Object. Contém a decomposição dos segundos em anos, meses, dias, horas, minutos e segundos, tanto em médias aproximadas quanto em valores exatos.
+ * @property {number} averageYears Número médio de anos.
+ * @property {number} averageMonths Número médio de meses.
+ * @property {number} averageDays Número médio de dias.
+ * @property {number} averageHours Número médio de horas.
+ * @property {number} averageMinutes Número médio de minutos.
+ * @property {number} averageSeconds Número médio de segundos.
+ * @property {number} averageMilliseconds Número médio de milissegundos.
+ * @property {number} exactYears Número exato de anos.
+ * @property {number} exactMonths Número exato de meses.
+ * @property {number} exactDays Número exato de dias.
+ * @property {number} exactHours Número exato de horas.
+ * @property {number} exactMinutes Número exato de minutos.
+ * @property {number} exactSeconds Número exato de segundos.
+ * @property {number} exactMilliseconds Número exato de milissegundos.
+ * 
+ * @example
+ * secondsDetailed(31536000);
+ * // Retorno:
+ * // {
+ * //   averageYears: 0,
+ * //   averageMonths: 11,
+ * //   averageDays: 30,
+ * //   averageHours: 4,
+ * //   averageMinutes: 39,
+ * //   averageSeconds: 54,
+ * //   averageMilliseconds: 0,
+ * //   exactYears: 0,
+ * //   exactMonths: 0,
+ * //   exactDays: 365,
+ * //   exactHours: 0,
+ * //   exactMinutes: 0,
+ * //   exactSeconds: 0,
+ * //   exactMilliseconds: 0
+ * // }
+ */
 const secondsDetailed = (numSecondsPassed, booSecondsBasedOnDate = false) => {
   if (isStr(numSecondsPassed)) {
     numSecondsPassed = Number(numSecondsPassed);

@@ -8,7 +8,7 @@ const funName = () => `dateToSeconds`;
 const funAllName = () => `const ${funName()} = (objDateAndTime) => {...};`;
 
 // Descrição da função:
-const funDesc = () => `--- Função que retorna os segundos totais da data passada.`;
+const funDesc = () => `--- Função que retorna os segundos totais da data fornecida.`;
 
 // Ajuda da função:
 const funHelp = () => `${funDesc()}
@@ -24,13 +24,30 @@ A chave 'minute' representa o minuto;
 A chave 'second' representa o segundo.
 
 Exemplo de uso:
-console.log(${funName()}({ year: '0001', month: '01', day: '02', hour: '00', minute: '00', second: '00' }));
+${funName()}({ year: '0001', month: '01', day: '02', hour: '00', minute: '00', second: '00' });
 
 Exemplo de retorno:
 86400
 
 O retorno sempre será um integer.`;
 
+/**
+ * Função que retorna os segundos totais da data fornecida.
+ * 
+ * @param {Object} [objDateAndTime] Opcional (object). Indica a data e hora e deve seguir esses padrões:
+ * @param {string|number} [objDateAndTime.year] - O ano.
+ * @param {string|number} [objDateAndTime.month] - O mês.
+ * @param {string|number} [objDateAndTime.day] - O dia.
+ * @param {string|number} [objDateAndTime.hour] - A hora.
+ * @param {string|number} [objDateAndTime.minute] - O minuto.
+ * @param {string|number} [objDateAndTime.second] - O segundo.
+ * @returns {number} Integer.
+ * 
+ * @example
+ * dateToSeconds({ year: '0001', month: '01', day: '02', hour: '00', minute: '00', second: '00' });
+ * // Retorno:
+ * // 86400
+ */
 const dateToSeconds = (objDateAndTime) => {
   const InsDataAgora = new Date();
   if (!!objDateAndTime && !isObj(objDateAndTime)) {

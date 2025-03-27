@@ -24,13 +24,30 @@ ${funAllName()}
 'inv' para inversamente proporcional.
 
 Exemplo de uso:
-console.log(${funName()}(2, 5, 4));
+${funName()}(2, 5, 4);
 
 Exemplo de retorno:
 10
 
 O retorno sempre será um number.`;
 
+/**
+ * Função que calcula a regra de três com as grandezas diretamente ou inversamente proporcionais.
+ * 
+ * @param {number} numFirstQuantity1 Obrigatório (number). Indica o primeiro número da primeira grandeza.
+ * @param {number} numSecondQuantity1 Obrigatório (number). Indica o primeiro número da segunda grandeza.
+ * @param {number} [numFirstQuantity2] Opcional (number). Indica o segundo número da primeira grandeza.
+ * @param {number} [numSecondQuantity2] Opcional (number). Indica o segundo número da segunda grandeza.
+ * @param {string} [strProportionality] Opcional (string). Indica se a regra de três vai ser diretamente ou inversamente proporcional e deve seguir algum desses padrões:
+ *   - 'dir' para diretamente proporcional;
+ *   - 'inv' para inversamente proporcional.
+ * @returns {number} Number.
+ * 
+ * @example
+ * ruleOfThree(2, 5, 4);
+ * // Retorno:
+ * // 10
+ */
 const ruleOfThree = (numFirstQuantity1, numSecondQuantity1, numFirstQuantity2, numSecondQuantity2, strProportionality = 'dir') => {
   if (isStr(numFirstQuantity1)) {
     numFirstQuantity1 = Number(numFirstQuantity1);

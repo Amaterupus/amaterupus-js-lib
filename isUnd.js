@@ -8,23 +8,34 @@ const funName = () => `isUnd`;
 const funAllName = () => `const ${funName()} = (anyParameter) => {...};`;
 
 // Descrição da função:
-const funDesc = () => `--- Função que verifica se o dado é do tipo undefined.`;
+const funDesc = () => `--- Função que verifica se o dado fornecido é do tipo undefined.`;
 
 // Ajuda da função:
 const funHelp = () => `${funDesc()}
 
 ${funAllName()}
 
-- O primeiro parâmetro é opcional, pode ser de qualquer tipo e indica o dado.
+- O primeiro parâmetro é opcional, pode ser de qualquer tipo e indica o dado a ser verificado.
 
 Exemplo de uso:
-console.log(${funName()}(undefined));
+${funName()}(undefined);
 
 Exemplo de retorno:
 true
 
 O retorno sempre será um boolean.`;
 
+/**
+ * Função que verifica se o dado fornecido é do tipo undefined.
+ * 
+ * @param {*} [anyParameter] Opcional (any). Dado a ser verificado.
+ * @returns {boolean} Boolean.
+ * 
+ * @example
+ * isUnd(undefined);
+ * // Retorno:
+ * // true
+ */
 const isUnd = (anyParameter) => {
   if (anyParameter === undefined) {
     return true;

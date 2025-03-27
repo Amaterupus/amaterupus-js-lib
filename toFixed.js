@@ -8,7 +8,7 @@ const funName = () => `toFixed`;
 const funAllName = () => `const ${funName()} = (numNumber, intDecimals = 0) => {...};`;
 
 // Descrição da função:
-const funDesc = () => `--- Função que faz o mesmo que ".toFixed(precisao)", mas sem arredondar.`;
+const funDesc = () => `--- Função que faz o mesmo que '.toFixed(precision)', mas sem arredondar.`;
 
 // Ajuda da função:
 const funHelp = () => `${funDesc()}
@@ -19,13 +19,25 @@ ${funAllName()}
 - O segundo parâmetro é opcional, deve ser do tipo integer e indica a precisão.
 
 Exemplo de uso:
-console.log(${funName()}(9.99));
+${funName()}(9.99);
 
 Exemplo de retorno:
 9
 
 O retorno sempre será um number.`;
 
+/**
+ * Função que faz o mesmo que '.toFixed(precision)', mas sem arredondar..
+ * 
+ * @param {number} numNumber Obrigatório (number). Indica o número a ser fixado.
+ * @param {number} [intDecimals=0] Opcional (integer). Indica a precisão.
+ * @returns {number} Number.
+ * 
+ * @example
+ * toFixed(9.99);
+ * // Retorno:
+ * // 9
+ */
 const toFixed = (numNumber, intDecimals = 0) => {
   if (isStr(numNumber)) {
     numNumber = Number(numNumber);

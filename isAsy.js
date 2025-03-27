@@ -8,23 +8,34 @@ const funName = () => `isAsy`;
 const funAllName = () => `const ${funName()} = (anyParameter) => {...};`;
 
 // Descrição da função:
-const funDesc = () => `--- Função que verifica se o dado é uma async function.`;
+const funDesc = () => `--- Função que verifica se o dado fornecido é uma async function.`;
 
 // Ajuda da função:
 const funHelp = () => `${funDesc()}
 
 ${funAllName()}
 
-- O primeiro parâmetro é opcional, pode ser de qualquer tipo e indica o dado.
+- O primeiro parâmetro é opcional, pode ser de qualquer tipo e indica o dado a ser verificado.
 
 Exemplo de uso:
-console.log(${funName()}(async () => {}));
+${funName()}(async () => {});
 
 Exemplo de retorno:
 true
 
 O retorno sempre será um boolean.`;
 
+/**
+ * Função que verifica se o dado fornecido é uma async function.
+ * 
+ * @param {*} [anyParameter] Opcional (any). Dado a ser verificado.
+ * @returns {boolean} Boolean.
+ * 
+ * @example
+ * isAsy(async () => {});
+ * // Retorno:
+ * // true
+ */
 const isAsy = (anyParameter) => {
   if (typeof anyParameter === 'function') {
     if (/^async\s/.test(anyParameter.toString())) {

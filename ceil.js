@@ -18,13 +18,24 @@ ${funAllName()}
 - O primeiro parâmetro é obrigatório, deve ser do tipo number e indica o número.
 
 Exemplo de uso:
-console.log(${funName()}('123.123'));
+${funName()}('123.123');
 
 Exemplo de retorno:
 123.124
 
 O retorno sempre será uma string.`;
 
+/**
+ * Função que soma 1 ao último elemento de um número.
+ * 
+ * @param {number} strNumber Obrigatório (number). Indica o número a ser processado.
+ * @returns {string} String.
+ * 
+ * @example
+ * ceil('123.123');
+ * // Retorno:
+ * // 123.124
+ */
 const ceil = (strNumber) => {
   if (!isStr(strNumber) || !isNum(Number(strNumber))) {
     console.error(`ERRO FUNÇÃO: ${funAllName()}`);

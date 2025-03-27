@@ -15,25 +15,36 @@ const funHelp = () => `${funDesc()}
 
 ${funAllName()}
 
-- O primeiro parâmetro é opcional, deve ser do tipo integer e indica o tempo em milissegundos a ser esperado.
+- O primeiro parâmetro é opcional, deve ser do tipo integer e indica o tempo em milissegundos a ser aguardado.
 
 Exemplo de uso:
-console.log(${funName()}(3));
+${funName()}(3000);
 
 Exemplo de retorno:
-true
+Promise { <pending> }
 
-O retorno sempre será um boolean.`;
+O retorno sempre será uma promise.`;
 
-const waitTime = async (intMilliseconds) => {
-  if (!isInt(numFirstQuantity1) || intMilliseconds <= 0) {
+/**
+ * Função assíncrona que aguarda o tempo passado como parâmetro em milissegundos baseado em uma Promise.
+ * 
+ * @param {number} [intMilliseconds=1000] Opcional (integer). Indica o tempo em milissegundos a ser aguardado.
+ * @returns {Promise<boolean>} Promise.
+ * 
+ * @example
+ * waitTime(3000);
+ * // Retorno:
+ * // Promise { <pending> }
+ */
+const waitTime = async (intMilliseconds = 1000) => {
+  if (!isInt(intMilliseconds) || intMilliseconds < 0) {
     intMilliseconds = 1000;
   };
 
   return new Promise(resolve => {
     setTimeout(() => {
       resolve(true);
-    }, intMilliseconds * 1000);
+    }, intMilliseconds);
   });
 };
 

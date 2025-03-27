@@ -19,7 +19,7 @@ ${funAllName()}
 - O segundo parâmetro é opcional, deve ser do tipo boolean e indica se os segundos passados estão no formato do 'Date.now() / 1000'.
 
 Exemplo de uso:
-console.log(${funName()}(86400));
+${funName()}(86400);
 
 Exemplo de retorno:
 {
@@ -34,6 +34,33 @@ Exemplo de retorno:
 
 O retorno sempre será um object.`;
 
+/**
+ * Função que .
+ * 
+ * @param {number} [numSecondsPassed] Opcional (number). Indica os segundos.
+ * @param {boolean} [booSecondsBasedOnDate=false] Opcional (boolean). Indica se os segundos passados estão no formato do 'Date.now() / 1000'.
+ * @returns {Object} Object. Contém a decomposição dos segundos em anos, meses, dias, horas, minutos e segundos reais.
+ * @property {string} year Número médio de anos.
+ * @property {string} month Número médio de meses.
+ * @property {string} day Número médio de dias.
+ * @property {string} hour Número médio de horas.
+ * @property {string} minute Número médio de minutos.
+ * @property {string} second Número médio de segundos.
+ * @property {string} millisecond Número médio de milissegundos.
+ * 
+ * @example
+ * secondsToDate(86400);
+ * // Retorno:
+ * // {
+ * //   year: '0001',
+ * //   month: '01',
+ * //   day: '02',
+ * //   hour: '00',
+ * //   minute: '00',
+ * //   second: '00',
+ * //   millisecond: '000'
+ * // }
+ */
 const secondsToDate = (numSecondsPassed, booSecondsBasedOnDate = false) => {
   if (isStr(numSecondsPassed)) {
     numSecondsPassed = Number(numSecondsPassed);

@@ -19,13 +19,25 @@ ${funAllName()}
 - O segundo parâmetro é opcional, deve ser do tipo integer e indica quantas casas decimais deve-se ter.
 
 Exemplo de uso:
-console.log(${funName()}(1250.999))
+${funName()}(1250.999);
 
 Exemplo de retorno:
 1.250,99
 
 O retorno sempre será uma string.`;
 
+/**
+ * Função que converte um número para o formato do dinheiro Real.
+ * 
+ * @param {number} numNumber Obrigatório (number). Indica o número a ser formatado para o dinheiro Real.
+ * @param {number} [intDecimals=2] Opcional (integer). Indica quantas casas decimais deve-se ter.
+ * @returns {string} String.
+ * 
+ * @example
+ * numberForFormRealMoney(1250.999);
+ * // Retorno:
+ * // 1.250,99
+ */
 const numberForFormRealMoney = (numNumber, intDecimals = 2) => {
   if (isStr(numNumber)) {
     numNumber = Number(numNumber);

@@ -1,6 +1,6 @@
 {
   "name": "amaterupus",
-  "version": "1.0.2",
+  "version": "1.0.0",
   "description": "Minha biblioteca de JavaScript.",
   "main": "index.js",
   "scripts": {

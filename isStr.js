@@ -8,23 +8,34 @@ const funName = () => `isStr`;
 const funAllName = () => `const ${funName()} = (anyParameter) => {...};`;
 
 // Descrição da função:
-const funDesc = () => `--- Função que verifica se o dado é do tipo string.`;
+const funDesc = () => `--- Função que verifica se o dado fornecido é do tipo string.`;
 
 // Ajuda da função:
 const funHelp = () => `${funDesc()}
 
 ${funAllName()}
 
-- O primeiro parâmetro é opcional, pode ser de qualquer tipo e indica o dado.
+- O primeiro parâmetro é opcional, pode ser de qualquer tipo e indica o dado a ser verificado.
 
 Exemplo de uso:
-console.log(${funName()}('1'));
+${funName()}('1');
 
 Exemplo de retorno:
 true
 
 O retorno sempre será um boolean.`;
 
+/**
+ * Função que verifica se o dado fornecido é do tipo string.
+ * 
+ * @param {*} [anyParameter] Opcional (any). Dado a ser verificado.
+ * @returns {boolean} Boolean.
+ * 
+ * @example
+ * isStr('1');
+ * // Retorno:
+ * // true
+ */
 const isStr = (anyParameter) => {
   if (typeof anyParameter === 'string') {
     return true;

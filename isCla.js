@@ -8,23 +8,34 @@ const funName = () => `isCla`;
 const funAllName = () => `const ${funName()} = (anyParameter) => {...};`;
 
 // Descrição da função:
-const funDesc = () => `--- Função que verifica se o dado é do tipo class.`;
+const funDesc = () => `--- Função que verifica se o dado fornecido é do tipo class.`;
 
 // Ajuda da função:
 const funHelp = () => `${funDesc()}
 
 ${funAllName()}
 
-- O primeiro parâmetro é opcional, pode ser de qualquer tipo e indica o dado.
+- O primeiro parâmetro é opcional, pode ser de qualquer tipo e indica o dado a ser verificado.
 
 Exemplo de uso:
-console.log(${funName()}(class {}));
+${funName()}(class {});
 
 Exemplo de retorno:
 true
 
 O retorno sempre será um boolean.`;
 
+/**
+ * Função que verifica se o dado fornecido é do tipo class.
+ * 
+ * @param {*} [anyParameter] Opcional (any). Dado a ser verificado.
+ * @returns {boolean} Boolean.
+ * 
+ * @example
+ * isCla(class {});
+ * // Retorno:
+ * // true
+ */
 const isCla = (anyParameter) => {
   if (typeof anyParameter === 'function') {
     if (/^class\s/.test(anyParameter.toString())) {

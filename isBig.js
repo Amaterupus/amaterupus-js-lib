@@ -8,23 +8,34 @@ const funName = () => `isBig`;
 const funAllName = () => `const ${funName()} = (anyParameter) => {...};`;
 
 // Descrição da função:
-const funDesc = () => `--- Função que verifica se o dado é do tipo bigint.`;
+const funDesc = () => `--- Função que verifica se o dado fornecido é do tipo bigint.`;
 
 // Ajuda da função:
 const funHelp = () => `${funDesc()}
 
 ${funAllName()}
 
-- O primeiro parâmetro é opcional, pode ser de qualquer tipo e indica o dado.
+- O primeiro parâmetro é opcional, pode ser de qualquer tipo e indica o dado a ser verificado.
 
 Exemplo de uso:
-console.log(${funName()}(1n));
+${funName()}(1n);
 
 Exemplo de retorno:
 true
 
 O retorno sempre será um boolean.`;
 
+/**
+ * Função que verifica se o dado fornecido é do tipo bigint.
+ * 
+ * @param {*} [anyParameter] Opcional (any). Dado a ser verificado.
+ * @returns {boolean} Boolean.
+ * 
+ * @example
+ * isBig(1n);
+ * // Retorno:
+ * // true
+ */
 const isBig = (anyParameter) => {
   if (typeof anyParameter === 'bigint') {
     return true;

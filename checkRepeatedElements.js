@@ -8,20 +8,20 @@ const funName = () => `checkRepeatedElements`;
 const funAllName = () => `const ${funName()} = (arrArrayOfElements, booCompareTypes = true) => {...};`;
 
 // Descrição da função:
-const funDesc = () => `--- Função que verifica quantas vezes cada elemento de um array se repete:`;
+const funDesc = () => `--- Função que verifica quantas vezes cada elemento de um array se repete.`;
 
 // Ajuda da função:
 const funHelp = () => `${funDesc()}
 
 ${funAllName()}
 
-- O primeiro parâmetro é obrigatório, deve ser do tipo array e indica o array a serem verificados os elementos que se repetem.
+- O primeiro parâmetro é obrigatório, deve ser do tipo array e indica o array a ser verificado os elementos que se repetem.
 - O segundo parâmetro é opcional, deve ser do tipo boolean, indica se os tipos dos elementos também serão comparados e deve seguir algum desses padrões:
 'true' para comparar os valores junto dos tipos;
 'false' para comparar apenas os valores, ignorando os tipos.
 
 Exemplo de uso:
-console.log(${funName()}([1, '1', 1, '2', 3]))
+${funName()}([1, '1', 1, '2', 3]);
 
 Exemplo de retorno:
 [
@@ -32,6 +32,27 @@ Exemplo de retorno:
 
 O retorno sempre será um array de arrays.`;
 
+/**
+ * Função que verifica quantas vezes cada elemento de um array se repete.
+ * 
+ * @param {Array} arrArrayOfElements Obrigatório (array). Indica o array a ser verificado os elementos que se repetem.
+ * @param {boolean} [booCompareTypes=true] Opcional (boolean). Indica se os tipos dos elementos também serão comparados e deve seguir algum desses padrões:
+ *   - 'true' para comparar os valores junto dos tipos;
+ *   - 'false' para comparar apenas os valores, ignorando os tipos.
+ * @returns {Array<Array>} Array de arrays. Cada subarray contém:
+ *   - Elemento;
+ *   - Número de repetições;
+ *   - Array com os tipos do elemento.
+ * 
+ * @example
+ * checkRepeatedElements([1, '1', 1, '2', 3]);
+ * // Retorno:
+ * // [
+ * //   [ 1, 3, [ 'number', 'string' ] ],
+ * //   [ '2', 1, [ 'string' ] ],
+ * //   [ 3, 1, [ 'number' ] ]
+ * // ]
+ */
 const checkRepeatedElements = (arrArrayOfElements, booCompareTypes = true) => {
   if (!isArr(arrArrayOfElements || arrArrayOfElements.length < 1)) {
     console.error(`ERRO FUNÇÃO: ${funAllName()}`);

@@ -15,18 +15,29 @@ const funHelp = () => `${funDesc()}
 
 ${funAllName()}
 
-- O primeiro parâmetro é opcional, deve ser do tipo integer e indica o tempo em milissegundos a ser esperado.
+- O primeiro parâmetro é opcional, deve ser do tipo integer e indica o tempo em milissegundos a ser aguardado.
 
 Exemplo de uso:
-console.log(${funName()}(3));
+${funName()}(3000);
 
 Exemplo de retorno:
-true
+Promise { true }
 
-O retorno sempre será um boolean.`;
+O retorno sempre será uma promise.`;
 
-const waitTimeNode = async (intMilliseconds) => {
-  if (!isInt(numFirstQuantity1) || intMilliseconds <= 0) {
+/**
+ * Função para Node.js que aguarda o tempo passado como parâmetro em milissegundos.
+ * 
+ * @param {number} [intMilliseconds=1000] Opcional (integer). Indica o tempo em milissegundos a ser aguardado.
+ * @returns {Promise<boolean>} Promise.
+ * 
+ * @example
+ * waitTimeNode(3000);
+ * // Retorno:
+ * // Promise { true }
+ */
+const waitTimeNode = async (intMilliseconds = 1000) => {
+  if (!isInt(intMilliseconds) || intMilliseconds < 0) {
     intMilliseconds = 1000;
   };
 

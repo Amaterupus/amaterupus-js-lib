@@ -8,23 +8,34 @@ const funName = () => `isIns`;
 const funAllName = () => `const ${funName()} = (anyParameter) => {...};`;
 
 // Descrição da função:
-const funDesc = () => `--- Função que verifica se o dado é uma instance.`;
+const funDesc = () => `--- Função que verifica se o dado fornecido é uma instance.`;
 
 // Ajuda da função:
 const funHelp = () => `${funDesc()}
 
 ${funAllName()}
 
-- O primeiro parâmetro é opcional, pode ser de qualquer tipo e indica o dado.
+- O primeiro parâmetro é opcional, pode ser de qualquer tipo e indica o dado a ser verificado.
 
 Exemplo de uso:
-console.log(${funName()}(new function fcoFuncaoConstrutora(nome) {this.name = nome}));
+${funName()}(new function constructorFunction(a) {this.a = a});
 
 Exemplo de retorno:
 true
 
 O retorno sempre será um boolean.`;
 
+/**
+ * Função que verifica se o dado fornecido é uma instance.
+ * 
+ * @param {*} [anyParameter] Opcional (any). Dado a ser verificado.
+ * @returns {boolean} Boolean.
+ * 
+ * @example
+ * isIns(new function constructorFunction(a) {this.a = a});
+ * // Retorno:
+ * // true
+ */
 const isIns = (anyParameter) => {
   if (typeof anyParameter === 'object' && anyParameter !== null && Object.getPrototypeOf(anyParameter) !== Object.prototype && Object.getPrototypeOf(anyParameter) !== Array.prototype) {
     return true;

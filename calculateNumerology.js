@@ -15,16 +15,39 @@ const funHelp = () => `${funDesc()}
 
 ${funAllName()}
 
-- O primeiro parâmetro é obrigatório e os demais são opcionais, devem ser do tipo string ou number e indicam os dados a serem calculados a numerologia.
+- O primeiro parâmetro é obrigatório e os demais são opcionais, devem ser do tipo string ou number e indicam os dados a ser calculada a numerologia.
 
 Exemplo de uso:
-console.log(${funName()}(123, 'abc', ' a2c!@~', 92));
+${funName()}(123, 'abc', ' a2c!@~', 92);
 
 Exemplo de retorno:
-[ [ '123', 6 ], [ 'abc', 6 ], [ ' a2c!@~', 6 ], [ '92', 11 ] ]
+[
+  [ '123', 6 ],
+  [ 'abc', 6 ],
+  [ ' a2c!@~', 6 ],
+  [ '92', 11 ]
+]
 
 O retorno sempre será um array de arrays.`;
 
+/**
+ * Função que calcula a numerologia dos parâmetros passados.
+ * 
+ * @param {...(string|number)} arrStringsOrNumbers Obrigatório e demais opcionais (string || number). Indicam os dados a ser calculada a numerologia.
+ * @return {Array<Array<(string|number)>>} Array de arrays. Cada subarray contém:
+ *   - Dado que foi calculada a numerologia;
+ *   - Cálculo da numerologia.
+ * 
+ * @example
+ * calculateNumerology(123, 'abc', ' a2c!@~', 92);
+ * // Retorno:
+ * // [
+ * //   [ '123', 6 ],
+ * //   [ 'abc', 6 ],
+ * //   [ ' a2c!@~', 6 ],
+ * //   [ '92', 11 ]
+ * // ]
+ */
 const calculateNumerology = (...arrStringsOrNumbers) => {
   if (arrStringsOrNumbers.length < 1) {
     console.error(`ERRO FUNÇÃO: ${funAllName()}`);

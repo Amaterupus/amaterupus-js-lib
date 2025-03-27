@@ -19,13 +19,25 @@ ${funAllName()}
 - O segundo parâmetro é obrigatório e os demais são opcionais, devem ser do tipo array e indicam os arrays com os elementos.
 
 Exemplo de uso:
-console.log(${funName()}(1, ['a', 'b', 'c'], ['d', 'e', 'f'], ['g', 'h', 'i']));
+${funName()}(1, ['a', 'b', 'c'], ['d', 'e', 'f'], ['g', 'h', 'i']);
 
 Exemplo de retorno:
 [ 'b', 'e', 'h' ]
 
 O retorno sempre será um array de elementos.`;
 
+/**
+ * Função que retorna os elementos de um índice de todos os arrays passados.
+ * 
+ * @param {number} [intIndexElement=0] Opcional (integer). Indica o índice alvo dos arrays.
+ * @param {...Array} arrArraysWithElement Obrigatório e demais opcionais (array). Indicam os arrays com os elementos.
+ * @return {Array} Array de elementos.
+ * 
+ * @example
+ * arraysWithElementInElements(1, ['a', 'b', 'c'], ['d', 'e', 'f'], ['g', 'h', 'i']);
+ * // Retorno:
+ * // [ 'b', 'e', 'h' ]
+ */
 const arraysWithElementInElements = (intIndexElement = 0, ...arrArraysWithElement) => {
   if (isStr(intIndexElement)) {
     intIndexElement = Number(intIndexElement);
